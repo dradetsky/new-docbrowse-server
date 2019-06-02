@@ -1,0 +1,8 @@
+docsets:
+  path: /home/dmr/.docsets
+  take:
+    - Docker
+    - marshmallow
+server:
+  host: localhost
+  port: 33333
