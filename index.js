@@ -2,7 +2,7 @@ const restify = require('restify')
 const corsMiddleware = require('restify-cors-middleware')
  
 const { loadPopCfg } = require('./lib/cfg')
-const { makeSearchHandler } = require('./lib/search')
+const { makeSearchHandlers } = require('./lib/search')
 
 const cors = corsMiddleware({
   allowHeaders: [
@@ -16,7 +16,7 @@ const cfgfile = process.env.DOCBROWSE_SERVER_CFGFILE || 'cfg.yml'
 async function start() {
   const cfg = await loadPopCfg(cfgfile)
 
-  const searchHandler = makeSearchHandler(cfg.docsets)
+  const {searchHandler, infoHandler} = makeSearchHandlers(cfg)
 
   const server = restify.createServer()
 
@@ -26,6 +26,7 @@ async function start() {
   server.use(restify.plugins.queryParser())
 
   server.get('/search', searchHandler)
+  server.get('/info', infoHandler)
   server.get('/*', restify.plugins.serveStaticFiles(cfg.docsets.path))
 
   await server.listen(cfg.server.port)

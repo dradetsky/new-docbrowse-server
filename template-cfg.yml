@@ -1,8 +1,16 @@
 docsets:
   path: /home/dmr/.docsets
   take:
+    - python-3.7.3
     - Docker
     - marshmallow
+    - Go
+querying:
+  unagmented: false
+  limits:
+    single: 100
+    # XXX: not yet enforced
+    total: 1000
 server:
   host: localhost
   port: 33333
