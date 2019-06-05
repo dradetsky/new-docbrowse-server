@@ -1,7 +1,7 @@
 const restify = require('restify')
 const corsMiddleware = require('restify-cors-middleware')
  
-const { loadPopCfg } = require('./lib/cfg')
+const { loadExpandCfg } = require('./lib/cfg')
 const { makeSearchHandlers } = require('./lib/search')
 
 const cors = corsMiddleware({
@@ -14,7 +14,7 @@ const cors = corsMiddleware({
 const cfgfile = process.env.DOCBROWSE_SERVER_CFGFILE || 'cfg.yml'
 
 async function start() {
-  const cfg = await loadPopCfg(cfgfile)
+  const cfg = await loadExpandCfg(cfgfile)
 
   const {searchHandler, infoHandler} = makeSearchHandlers(cfg)
 

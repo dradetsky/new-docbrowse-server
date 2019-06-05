@@ -5,6 +5,21 @@ docsets:
     - Docker
     - marshmallow
     - Go
+  # equivalent atm
+  # skip:
+  #   - Ansible
+  #   - Emacs Lisp
+  #   - Flask
+  #   - JavaScript
+  #   - Jinja
+  #   - Lua
+  #   - MySQL
+  #   - NodeJS
+  #   - Python 3
+  #   - React
+  #   - SQLAlchemy
+  #   - terraform
+  #   - Terraform
 querying:
   unagmented: false
   limits:
